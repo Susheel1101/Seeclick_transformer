@@ -50,7 +50,7 @@ huggingface_hub
 ### Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/[your-username]/SeeClick-Presentation.git
+git clone https://github.com/njucckevin/SeeClick.git
 cd SeeClick-Presentation
 ```
 
