@@ -29,13 +29,23 @@ SeeClick is a novel visual GUI agent that operates solely on screenshots to auto
 - ScreenSpot benchmark for evaluation
 - State-of-the-art performance with minimal training data
 
+![SeeClick Architecture](assets/architecture.png)
+*Figure: Overview of SeeClick's framework and GUI grounding pre-training*
+
 ## Technical Architecture
 The model comprises three key components:
 1. Vision Encoder: ViT for screenshot processing
 2. Vision-Language Adapter: Connects visual features to language model
 3. Large Language Model: Handles instruction understanding and action generation
 
+
+![Approach Comparison](assets/comparison.png)
+*Figure: Comparison of text-based vs. SeeClick's vision-based approach*
+
 ## Implementation
+
+![Implementation Examples](assets/screenspot_examples.png)
+*Figure: Examples of SeeClick locating different UI elements across platforms*
 
 ### Dependencies
 ```bash
@@ -65,6 +75,11 @@ from huggingface_hub import login
 login(token="your_token_here")
 ```
 
+### Visual Examples
+![Demo Examples](assets/demo_examples.png)
+*Figure: SeeClick performing real-world GUI interactions*
+
+
 ### Demo
 The `demo/seeclick_demo.ipynb` notebook contains a complete implementation demonstrating SeeClick's capability to:
 - Load and process screenshots
@@ -75,6 +90,11 @@ The `demo/seeclick_demo.ipynb` notebook contains a complete implementation demon
 ```
 SeeClick-Presentation/
 ├── README.md
+├── assets/                     
+│   ├── architecture.png
+│   ├── comparison.png
+│   ├── demo_examples.png
+│   └── screenspot_examples.png
 ├── demo/
 │   ├── seeclick_demo.ipynb
 │   └── demo_pictures/
