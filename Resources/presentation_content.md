@@ -1,42 +1,81 @@
 # SeeClick Presentation Content
 
-## Technical Overview Speech
+## Technical Overview
 
-Today I'm excited to present SeeClick, a groundbreaking advancement in visual GUI agents that fundamentally transforms how transformer-based models interact with graphical interfaces. This work from Nanjing University and Shanghai AI Lab introduces a novel architecture that bridges the gap between vision-language models and practical GUI automation.
+# SeeClick: A Visual GUI Agent
 
-Let me start with the core technical problem. Current GUI automation relies heavily on Large Language Models like GPT-4 processing structured DOM or HTML data. While this works, it faces three critical technical bottlenecks:
-1. Structured data accessibility becomes impossible for native applications - imagine trying to get HTML from an iOS app
-2. The context window gets overwhelmed - a simple webpage's HTML can consume thousands of tokens in the transformer's attention mechanism
-3. Platform-specific observation spaces fragment our solutions - we need different architectures for HTML, DOM, and Android View Hierarchy
+## Core Technical Problem
+Current GUI automation faces three critical technical bottlenecks:
 
-SeeClick's innovation lies in its transformer-based architecture that completely reimagines this approach. Instead of text-based representations, it leverages a Vision Transformer (ViT) encoder coupled with a Large Vision-Language Model through a specialized adapter layer. The key technical breakthrough here is what the authors call 'GUI grounding' - training the model to map natural language instructions directly to precise (x,y) coordinates or bounding boxes in interface screenshots.
+1. **Structured Data Accessibility**
+   - Impossible for native applications
+   - Example: Cannot extract HTML from iOS apps
 
-The architecture comprises three key components:
-1. Vision Encoder: A ViT (Vision Transformer) that processes screenshot inputs
-2. Vision-Language Adapter: Connects the visual features to the language model
-3. Large Language Model: Handles instruction understanding and action generation
+2. **Context Window Limitations**
+   - Simple webpage HTML consumes thousands of tokens
+   - Overloads transformer attention mechanism
 
-Let's dive deeper into how these components work together. The backbone uses a modified vision encoder based on ViT, processing screenshots at 448x448 resolution. This feeds into a vision-language adapter that creates a unified representation space, allowing the Large Language Model to reason about visual elements and generate actions. The authors implemented this using LoRA for efficient fine-tuning of both the visual encoder and language model components.
+3. **Platform Fragmentation**
+   - Different architectures needed for:
+     * HTML
+     * DOM
+     * Android View Hierarchy
 
-The training pipeline is particularly sophisticated:
-- GUI grounding pre-training utilizes:
- * 300K web pages with automatically extracted text-location pairs using a novel DOM parsing technique
- * Mobile UI data incorporating both widget captioning and hierarchical UI summarization
- * General vision-language instruction data to maintain LVLM capabilities
-- They employ continual pre-training with action space modeling for:
- * Click operations as normalized (x,y) coordinates
- * Text input generation
- * Navigation command prediction
+## Technical Innovation
+SeeClick introduces a transformer-based architecture with:
+- Vision Transformer (ViT) encoder
+- Large Vision-Language Model
+- Specialized adapter layer
+- Key breakthrough: 'GUI grounding'
 
-For benchmarking, they introduced ScreenSpot - a meticulously curated dataset spanning mobile, desktop, and web interfaces. What's technically interesting is their evaluation methodology across different element types: text, icons, widgets, and complex nested interfaces.
+### Key Components
+1. Vision Encoder
+   - ViT for screenshot processing
+   - 448x448 resolution input
 
-The results are remarkable from a transformer architecture perspective:
-- On MiniWob: 73.6% success rate with just 2.8K training examples compared to the previous SOTA's 64.6% using 1.3M examples - that's two orders of magnitude more data efficient
-- On ScreenSpot: 53.4% average accuracy across platforms, significantly outperforming GPT-4V's 16.2% in GUI grounding
-- Most importantly, they demonstrated a direct correlation between enhanced GUI grounding capability and downstream task performance
+2. Vision-Language Adapter
+   - Connects visual features to language model
+   - Creates unified representation space
 
-This architecture essentially creates a foundation model for GUI interaction, achieving something unprecedented - a single transformer-based model that can interact with any graphical interface using pure visual input, much like human visual processing patterns.
+3. Large Language Model
+   - Instruction understanding
+   - Action generation
 
+### Training Pipeline
+**GUI Grounding Pre-training:**
+- 300K web pages with text-location pairs
+- Mobile UI data:
+  * Widget captioning
+  * Hierarchical UI summarization
+- General vision-language instruction data
+
+**Action Space Modeling:**
+- Click operations (normalized x,y coordinates)
+- Text input generation
+- Navigation command prediction
+
+## Evaluation & Results
+
+### Benchmarks
+1. **MiniWob**
+   - 73.6% success rate with 2.8K examples
+   - Previous SOTA: 64.6% with 1.3M examples
+   - Two orders of magnitude more data efficient
+
+2. **ScreenSpot**
+   - 53.4% average accuracy across platforms
+   - Outperforms GPT-4V (16.2%) in GUI grounding
+   - Evaluation across:
+     * Text elements
+     * Icons
+     * Widgets
+     * Complex nested interfaces
+
+## Achievement
+Created a foundation model for GUI interaction that:
+- Uses pure visual input
+- Works across any graphical interface
+- Mirrors human visual processing patterns
 ## Audience Interaction Questions
 
 ### Question 1
