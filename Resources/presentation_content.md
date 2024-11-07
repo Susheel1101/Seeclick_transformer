@@ -140,7 +140,7 @@ def inference(model, screenshot, instruction, previous_actions):
 
 ## Implementation Demonstration
 
-[Code walkthrough of the actual implementation]
+[Code walkthrough of the actual implementation also located in the Seeclick demo ipynb]
 
 ```python
 # Model Initialization
