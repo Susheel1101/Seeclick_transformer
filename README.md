@@ -3,6 +3,9 @@
 ## Paper Presentation
 This repository contains materials for the presentation on the paper "SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents" for the Transformers class.
 
+Here is the link to the recording of the  presentation - 
+[SeeClick_recording](https://drive.google.com/file/d/1iXKLT_nherocz2028yofiT2VgfJet072/view?usp=sharing)
+
 ## Authors & Citation
 Authors: Kanzhi Cheng, Qiushi Sun, Yougang Chu, Fangzhi Xu, Yantao Li, Jianbing Zhang, Zhiyong Wu
 
