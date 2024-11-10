@@ -76,31 +76,19 @@ Created a foundation model for GUI interaction that:
 - Uses pure visual input
 - Works across any graphical interface
 - Mirrors human visual processing patterns
+  
 ## Audience Interaction Questions
 
 ### Question 1
 "Looking at SeeClick's architecture, why do you think the authors chose to predict (x,y) coordinates directly as natural language outputs rather than using a more traditional classification approach with discrete position tokens like some other vision-language models?"
 
-Discussion Points:
-- Natural language coordinate prediction offers more flexibility
-- No need for additional tokenization
-- More precise localization
-- Aligns with human intuition
-- Coordinates can be generated as part of the natural language output
-- Allows for continuous rather than discrete position values
-- Integrates seamlessly with the model's existing language capabilities
+Ans- The authors' choice to predict (x,y) coordinates as natural language is elegant and practical for several reasons. Unlike discretized positions that divide the screen into fixed grids, natural language coordinates allow continuous, precise localization without any resolution constraints. This approach leverages the LLM's existing ability to handle numerical values, eliminates the need for additional position embedding layers or post-processing, and provides more intuitive outputs that match human understanding of spatial relationships. It's a simpler end-to-end solution that makes SeeClick's architecture more flexible and generalizable across different interface types and screen sizes.
 
 ### Question 2
 "Given that SeeClick achieves better performance with just 0.3% of the training data compared to previous approaches, what do you think is the key factor enabling this data efficiency: the GUI grounding pre-training strategy or the unified vision-language architecture, and why?"
 
-Discussion Points:
-- GUI grounding pre-training provides specialized knowledge
-- Unified architecture enables better transfer learning
-- Quality of the pre-training data
-- Effective leveraging of both visual and language capabilities
-- Role of LoRA in efficient fine-tuning
-- Importance of the vision-language adapter design
-- Connection between pre-training objectives and downstream tasks
+Ans - While both the GUI grounding pre-training and unified architecture contribute to SeeClick's impressive data efficiency, the pre-training strategy appears to be the key factor. The automated curation of 300K web pages, combined with mobile UI data and general vision-language tasks, creates a rich foundation for understanding GUI elements across platforms. This comprehensive pre-training provides the model with strong inductive biases for GUI interaction, which the unified architecture can then effectively leverage through transfer learning. The direct correlation shown between improved GUI grounding and downstream task performance supports this, suggesting that the pre-training strategy enables the model to learn generalizable GUI interaction patterns with minimal task-specific training.
+
 
 
 ## Formal Pseudocode Description
